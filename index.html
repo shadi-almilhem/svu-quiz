@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="تدرّب على أسئلة مواد SVU من خلال اختبار تفاعلي مع مؤقت، حفظ التقدم، مراجعة الأخطاء، ومشاركة النتيجة."
+    />
+    <meta name="theme-color" content="#0b1220" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta
+      property="og:title"
+      content="اختبارات SVU | تدريب تفاعلي للمواد الجامعية"
+    />
+    <meta
+      property="og:description"
+      content="تدرّب على أسئلة مواد SVU من خلال اختبار تفاعلي مع مؤقت، حفظ التقدم، مراجعة الأخطاء، ومشاركة النتيجة."
+    />
+    <meta property="og:site_name" content="اختبارات SVU" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="اختبارات SVU | تدريب تفاعلي للمواد الجامعية"
+    />
+    <meta
+      name="twitter:description"
+      content="تدرّب على أسئلة مواد SVU من خلال اختبار تفاعلي مع مؤقت، حفظ التقدم، مراجعة الأخطاء، ومشاركة النتيجة."
+    />
+    <title>اختبارات SVU | تدريب تفاعلي للمواد الجامعية</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Hero Title -->
+      <div class="hero-title" id="hero-title">
+        <h1>SVU Quiz</h1>
+      </div>
+
+      <div class="topbar">
+        <div class="title">
+          <p style="max-width: 30rem">
+            اختر المادة مباشرة أو اختر ملف JSON المحمل لديك وسنحوّله إلى أسئلة.
+            بعد الإرسال سترى نتيجتك + الأسئلة الخاطئة بالتفصيل.
+          </p>
+        </div>
+
+        <div class="filebox">
+          <div class="load-options">
+            <button type="button" class="gist-btn" id="load-gist-btn">
+              <span id="gist-btn-text">اختيار المادة مباشرة</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M4 8C4 5.17157 4 3.75736 4.87868 2.87868C5.75736 2 7.17157 2 10 2H14C16.8284 2 18.2426 2 19.1213 2.87868C20 3.75736 20 5.17157 20 8V16C20 18.8284 20 20.2426 19.1213 21.1213C18.2426 22 16.8284 22 14 22H10C7.17157 22 5.75736 22 4.87868 21.1213C4 20.2426 4 18.8284 4 16V8Z"
+                    stroke="var(--success)"
+                    stroke-width="1.5"
+                  ></path>
+                  <path
+                    d="M19.8978 16H7.89778C6.96781 16 6.50282 16 6.12132 16.1022C5.08604 16.3796 4.2774 17.1883 4 18.2235"
+                    stroke="var(--success)"
+                    stroke-width="1.5"
+                  ></path>
+                  <path
+                    d="M8 7H16"
+                    stroke="var(--success)"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  ></path>
+                  <path
+                    d="M8 10.5H13"
+                    stroke="var(--success)"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  ></path>
+                  <path
+                    d="M13 16V19.5309C13 19.8065 13 19.9443 12.9051 20C12.8103 20.0557 12.6806 19.9941 12.4211 19.8708L11.1789 19.2808C11.0911 19.2391 11.0472 19.2182 11 19.2182C10.9528 19.2182 10.9089 19.2391 10.8211 19.2808L9.57889 19.8708C9.31943 19.9941 9.18971 20.0557 9.09485 20C9 19.9443 9 19.8065 9 19.5309V16.45"
+                    stroke="var(--success)"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  ></path>
+                </g>
+              </svg>
+            </button>
+            <span class="or-divider">أو</span>
+            <input
+              class="file-input"
+              type="file"
+              id="file-input"
+              accept=".json"
+            />
+            <label class="file-picker" for="file-input" id="file-picker-label">
+              <span id="file-status">اختر ملف JSON</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="slides-shell" id="slides-shell" style="display: none">
+        <div class="slides-top">
+          <div class="progress">
+            <span class="badge" id="progress-text">سؤال 0 / 0</span>
+            <div class="meter" aria-hidden="true">
+              <span id="progress-fill"></span>
+            </div>
+          </div>
+
+          <div class="slide-actions">
+            <button class="nav-btn" id="prev-btn" type="button">
+              ▶ السابق
+            </button>
+            <button class="nav-btn" id="next-btn" type="button">
+              التالي ◀
+            </button>
+            <button
+              class="nav-btn primary"
+              id="finish-btn"
+              type="button"
+              style="display: none"
+            >
+              إنهاء وحساب النتيجة
+            </button>
+            <button
+              class="nav-btn"
+              id="reset-btn"
+              type="button"
+              style="display: none"
+            >
+              حاول مرة أخرى
+            </button>
+          </div>
+        </div>
+
+        <!-- Chapter Progress -->
+        <div class="chapter-progress" id="chapter-progress-container"></div>
+
+        <!-- Chapter Motivation -->
+        <div class="chapter-motivation" id="chapter-motivation-container"></div>
+
+        <div id="quiz-container"></div>
+        <p class="hint">
+          تقدر تتخطى أي سؤال: اضغط التالي بدون اختيار إجابة. ⏱️ المؤقت يعمل 30
+          ثانية لكل سؤال. 📋 الأسئلة متعددة الاختيارات تتطلب الضغط على زر
+          التأكيد.
+        </p>
+      </div>
+      <div class="results" id="result-container" style="display: none"></div>
+      <footer>
+        صنع بواسطة
+        <a
+          href="https://shadialmilhem.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >SHADi</a
+        >
+        <br />
+        لإضافة اختبار جديد تواصل معي على تيليجرام:
+        <a
+          href="https://t.me/shadi_m02"
+          target="_blank"
+          rel="noopener noreferrer"
+          dir="ltr"
+          >@shadi_m02</a
+        >
+        <br />
+        <span class="visitor-counter">
+          <span>الزيارات</span>
+          <img
+            src="https://hits.sh/github.com/shadi-almilhem/svu-quiz.svg"
+            alt="عداد الزيارات"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+            onerror="this.parentElement.hidden = true"
+          />
+        </span>
+      </footer>
+    </div>
+    <div class="shortcuts-bar" id="shortcuts-bar" hidden>
+      <div class="shortcuts-row" aria-label="اختصارات لوحة المفاتيح">
+        <span class="shortcuts-title">اختصارات:</span>
+        <span><kbd>←</kbd> التالي</span>
+        <span class="sep">•</span>
+        <span><kbd>→</kbd> السابق</span>
+        <span class="sep">•</span>
+        <span><kbd>Space</kbd> التالي</span>
+        <span class="sep">•</span>
+        <span><kbd>1</kbd> - <kbd>9</kbd> اختيار الإجابة</span>
+        <span class="sep">•</span>
+        <span><kbd>Enter</kbd> تأكيد متعدد</span>
+        <span class="sep">•</span>
+        <span><kbd>P</kbd> إيقاف/استئناف المؤقت</span>
+      </div>
+    </div>
+
+    <dialog
+      class="modal"
+      id="submit-confirm"
+      aria-labelledby="submit-confirm-title"
+    >
+      <div class="modal-card">
+        <h3 id="submit-confirm-title">تأكيد الإرسال</h3>
+        <p id="submit-confirm-text">هل تريد إنهاء وحساب النتيجة؟</p>
+        <div class="modal-actions">
+          <button class="nav-btn primary" id="confirm-submit-btn" type="button">
+            نعم، احسب النتيجة
+          </button>
+          <button class="nav-btn" id="cancel-submit-btn" type="button">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog
+      class="modal"
+      id="subject-select-dialog"
+      aria-labelledby="subject-select-title"
+    >
+      <div class="modal-card">
+        <h3 id="subject-select-title">اختر المادة</h3>
+        <p>
+          اضغط على زر المادة لتحميل الأسئلة مباشرة، أو اضغط على زر التنزيل
+          <span
+            style="
+              display: inline-flex;
+              vertical-align: middle;
+              background: rgba(255, 255, 255, 0.1);
+              border-radius: 4px;
+              padding: 2px 4px;
+              margin: 0 2px;
+            "
+            ><svg
+              width="12"
+              height="12"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" /></svg
+          ></span>
+          لحفظ ملف JSON واستخدامه عند ضعف الاتصال.
+        </p>
+        <div class="subject-buttons">
+          <button
+            class="subject-btn sde601"
+            type="button"
+            onclick="loadSubject('SDE601')"
+          >
+            <span
+              class="subject-download-btn"
+              onclick="
+                event.stopPropagation();
+                downloadSubjectJson('SDE601');
+              "
+              title="تنزيل ملف JSON"
+            >
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </span>
+            <span class="subject-icon">💻</span>
+            <span class="subject-name">SDE601</span>
+            <span class="subject-desc"> تنقيب بيانات</span>
+          </button>
+          <button
+            class="subject-btn dnl601"
+            type="button"
+            onclick="loadSubject('DNL601')"
+          >
+            <span
+              class="subject-download-btn"
+              onclick="
+                event.stopPropagation();
+                downloadSubjectJson('DNL601');
+              "
+              title="تنزيل ملف JSON"
+            >
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </span>
+            <span class="subject-icon">🗄️</span>
+            <span class="subject-name">DNL601</span>
+            <span class="subject-desc"> قواعد البيانات (NoSQL)</span>
+          </button>
+          <button
+            class="subject-btn sdb601"
+            type="button"
+            onclick="loadSubject('SDB601')"
+          >
+            <span
+              class="subject-download-btn"
+              onclick="
+                event.stopPropagation();
+                downloadSubjectJson('SDB601');
+              "
+              title="تنزيل ملف JSON"
+            >
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </span>
+            <span class="subject-icon">💾</span>
+            <span class="subject-name">SDB601</span>
+            <span class="subject-desc"> قواعد البيانات 2</span>
+          </button>
+          <button
+            class="subject-btn dpd601"
+            type="button"
+            onclick="loadSubject('DPD601')"
+          >
+            <span
+              class="subject-download-btn"
+              onclick="
+                event.stopPropagation();
+                downloadSubjectJson('DPD601');
+              "
+              title="تنزيل ملف JSON"
+            >
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </span>
+            <span class="subject-icon">📊</span>
+            <span class="subject-name">DPD601</span>
+            <span class="subject-desc"> برمجة خاصة بعلم البيانات</span>
+          </button>
+          <button
+            class="subject-btn bis601"
+            type="button"
+            onclick="loadSubject('BIS601')"
+          >
+            <span
+              class="subject-download-btn"
+              onclick="
+                event.stopPropagation();
+                downloadSubjectJson('BIS601');
+              "
+              title="تنزيل ملف JSON"
+            >
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </span>
+            <span class="subject-icon">🔐</span>
+            <span class="subject-name">BIS601</span>
+            <span class="subject-desc"> برمجة أمن نظم المعلومات</span>
+          </button>
+          <button
+            class="subject-btn ddv601"
+            type="button"
+            onclick="loadSubject('DDV601')"
+          >
+            <span
+              class="subject-download-btn"
+              onclick="
+                event.stopPropagation();
+                downloadSubjectJson('DDV601');
+              "
+              title="تنزيل ملف JSON"
+            >
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </span>
+            <span class="subject-icon">📈</span>
+            <span class="subject-name">DDV601</span>
+            <span class="subject-desc"> التمثيل المرئي للبيانات</span>
+          </button>
+        </div>
+
+        <details class="json-structure-info">
+          <summary>
+            <svg
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+            هيكل ملف JSON (لإنشاء ملفك الخاص)
+          </summary>
+          <div class="json-structure-content">
+            <p>يمكنك إنشاء ملف أسئلة خاص بك بالهيكل التالي:</p>
+            <ul>
+              <li>
+                كل سؤال يحتوي على <code>question</code> (نص السؤال) و
+                <code>answers</code> (مصفوفة الإجابات)
+              </li>
+              <li>
+                كل إجابة تحتوي على <code>text</code> (نص الإجابة) و
+                <code>chosen</code> (صح/خطأ)
+              </li>
+              <li>
+                يمكن أن يكون هناك <strong>أكثر من إجابة صحيحة</strong> (<code
+                  >"chosen": true</code
+                >)
+              </li>
+              <li>عدد الإجابات من <strong>2 إلى 9</strong> إجابات</li>
+            </ul>
+            <pre><button type="button" class="copy-code-btn" onclick="copyJsonTemplate(this)">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              <span>نسخ</span>
+            </button><code>{
+  "messages": [
+    {
+      "poll": {
+        "question": "نص السؤال هنا؟",
+        "answers": [
+          { "text": "الإجابة الأولى", "chosen": false },
+          { "text": "الإجابة الصحيحة", "chosen": true },
+          { "text": "إجابة أخرى", "chosen": false }
+          { "text": "إجابة أخرى", "chosen": false }
+        ]
+      }
+    },
+     {
+      "poll": {
+        "question": "نص السؤال هنا؟",
+        "answers": [
+          { "text": "الإجابة الأولى", "chosen": false },
+          { "text": "الإجابة الصحيحة", "chosen": true },
+          { "text": "إجابة أخرى", "chosen": false }
+          { "text": "إجابة أخرى", "chosen": false }
+        ]
+      }
+    }
+  ]
+}</code></pre>
+          </div>
+        </details>
+
+        <div class="modal-actions" style="margin-top: 12px">
+          <button class="nav-btn" id="cancel-subject-btn" type="button">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
