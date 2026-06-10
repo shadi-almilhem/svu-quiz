@@ -100,18 +100,42 @@ footer a:focus-visible {
   border-radius: 6px;
 }
 
-.visitor-counter {
+.footer-meta-links {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.visitor-counter,
+.github-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 8px;
   font-size: 12px;
 }
 
 .visitor-counter img {
   height: 20px;
   max-width: 150px;
+}
+
+.github-link {
+  min-height: 24px;
+  padding: 2px 8px;
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom-style: solid;
+}
+
+.github-link svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 #quiz-container {
