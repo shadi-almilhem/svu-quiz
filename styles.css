@@ -132,6 +132,12 @@ footer a:focus-visible {
   border-bottom-style: solid;
 }
 
+.github-link:hover {
+  color: var(--primary-2);
+  border-color: rgba(167, 139, 250, 0.42);
+  background: rgba(255, 255, 255, 0.07);
+}
+
 .github-link svg {
   width: 16px;
   height: 16px;
